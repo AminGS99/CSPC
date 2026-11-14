@@ -1,13 +1,28 @@
-# CSPC-Lab A: Radioactive Decay Simulation
+# CSPC - Computer Science for Physics and Chemistry
 
-### 1. Test Status
--All unit tests passed successfully
+My coursework repository. Each practical is under PW<n>/Lab <X>/.
 
-### 2. Performance Benchmark (`speed.py`)
-- **Parameters:** $N0 = 200000$ atoms, $\lambda=0.4$
-- **Pure-Python loop (`simulate_loop`):** 1.7788 seconds
-- **Vectorised NumPy (`simulate`):** 0.0002 seconds
-- **Speed-up factor:** NumPy version is **~10,932.83x faster**.
+## Setup
+Create the environment for a given lab:
+    conda env create -f PW<n>/Lab <X>/environment.yml
+    conda activate cspc
 
-### 3.Conclusion
-Vectorisation using NumPy eliminates slow Python loops, replacing them with optimized C-level operations. This improves performance, making scientific simulations thousands of times faster while keeping high precision.
+Run the tests for a lab inside its folder:
+cd "PW<n>/Lab <X>"
+pytest -v
+
+## PW1 - Lab A: Reproducible Foundations
+
+**What I built:**
+- A vectorized radioactive decay simulation using NumPy and a pure-Python loop version, accompanied by automated pytest unit tests.
+
+**Speed comparison (loop vs NumPy):**
+- loop : 1.7788 s
+- numpy : 0.0002 s
+- speed-up : 10932.83 x faster
+
+**Tests:** all passing? (yes / no)
+- yes
+
+**Conclusion:**
+Vectorisation using NumPy eliminates slow Python interpreter loops, replacing them with optimized C-level operations. This improves performance, making scientific simulations thousands of times faster while keeping high precision.
