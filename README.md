@@ -29,3 +29,12 @@ pytest -v
 
 **Conclusion:**
 Vectorisation using NumPy eliminates slow Python interpreter loops, replacing them with optimized C-level operations. This improves performance, making scientific simulations thousands of times faster while keeping high precision.
+
+
+## PW1 - Lab B: Data, Plotting and Automation
+
+**Observation:**
+- The observed dataset shows counts decreasing from initial value N0 over time following the analytical curve N=N0 * e^(-lambda*t).
+
+**Snakemake pipeline**
+- Snakemake takes `decay_observed.csv` as input, runs `plot.py` and generates `figure.png` if output is missing or outdated.
