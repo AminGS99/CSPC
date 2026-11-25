@@ -50,3 +50,20 @@ Vectorisation using NumPy eliminates slow Python interpreter loops, replacing th
 - **Differentiation & Noise:** Differentiating noisy position measurements twice magnifies small noise into large swings in acceleration while position itself has no derivatives taken and remains smooth.
 
 - **Integration & Recovery:** Integrating the noisy acceleration twice back to position gives a largest difference of `0.7846` m, matching the original trajectory within about a meter because integration cancels out random noise.
+
+
+## PW2 - Lab B: Optimization in Chemistry
+
+### Warm-up: Comparing Optimization Methods
+- **An easy convex function $f(x)=(x - 3)^2+1$ (`x0 = 0`):** Gradient descent, Newton's method, and SLSQP all agreed and converged to the unique global minimum at `x = 3.000000`.
+- **A harder landscape $g(x) = x^4 - 3x^2 + x + 5$:**
+  - **Agreement & Newton's stationary point:** The methods did not all agree. From `x0 = 0.0`, gradient descent and SLSQP reached the global minimum `x ≈ -1.3008`, while Newton's method converged to `x ≈ 0.1699` (a **local maximum**, because Newton only searches for $g'(x) = 0$).
+  - **Effect of the starting point:** Changing the start to `x0 = 2.0` caused both gradient descent and Newton to settle into the nearby local minimum at `x ≈ 1.1309` ($g'' ≈ 9.35 > 0$), while SLSQP stepped across to the global minimum at `x ≈ -1.3006`.
+
+### Chemistry 1: Fitting a Reaction Rate
+- **Kinetics Reaction:** Fitting $C(t) = C_0 e^{-kt}$ with SLSQP gave a rate constant of `k~0.2618` (close to `0.25`), with fitted curve tracking the noisy concentration measuremnets in `kinetics.png`.
+
+### Chemistry 2: Chemical Equilibrium
+- **Chemical equilibrium** For H2 + I2 ⇌ HI ($K = 15.6$, starting from 1 mol each of H2 and I2), root-finding with newton and squared-imbalance minimization with SLSQP agreed on $x \approx 0.6638$, yielding `0.3362 mol` H2, `0.3362 mol` I2, and `1.3277 mol` HI (plotted in `equilibrium.png`). 
+### Chemistry 3:
+- **Titration equivalence point :** Differentiating pH with respect to base volume via `np.gradient` and finding `np.argmax` located the steepest pH jump (equivalence point) at approximately `<titration_vol> mL` , plotted alongside `d(pH)/dV` in `titration.png`
