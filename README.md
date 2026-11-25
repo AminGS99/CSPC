@@ -38,3 +38,15 @@ Vectorisation using NumPy eliminates slow Python interpreter loops, replacing th
 
 **Snakemake pipeline**
 - Snakemake takes `decay_observed.csv` as input, runs `plot.py` and generates `figure.png` if output is missing or outdated.
+
+
+## PW2 - Lab A: Motion from Tracking Data
+
+### Results & Observations
+- **Mean acceleration:** `-8.58 m/s²` (expected `~-9.81 m/s²`)
+
+- **Acceleration standard deviation:** `28.72 m/s²`
+
+- **Differentiation & Noise:** Differentiating noisy position measurements twice magnifies small noise into large swings in acceleration while position itself has no derivatives taken and remains smooth.
+
+- **Integration & Recovery:** Integrating the noisy acceleration twice back to position gives a largest difference of `0.7846` m, matching the original trajectory within about a meter because integration cancels out random noise.
